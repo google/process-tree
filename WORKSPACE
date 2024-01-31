@@ -34,6 +34,16 @@ http_archive(
     urls = ["https://github.com/google/googletest/archive/58d77fa8070e8cec2dc1ed015d66b454c8d78850.zip"],
 )
 
+http_archive(
+    name = "build_bazel_rules_apple",
+    sha256 = "8ac4c7997d863f3c4347ba996e831b5ec8f7af885ee8d4fe36f1c3c8f0092b2c",
+    url = "https://github.com/bazelbuild/rules_apple/releases/download/2.5.0/rules_apple.2.5.0.tar.gz",
+)
+
+load("@build_bazel_rules_apple//apple:repositories.bzl", "apple_rules_dependencies")
+
+apple_rules_dependencies()
+
 # Hedron Bazel Compile Commands Extractor
 # Allows integrating with clangd
 # https://github.com/hedronvision/bazel-compile-commands-extractor

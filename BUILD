@@ -1,3 +1,4 @@
+load("@build_bazel_rules_apple//apple:macos.bzl", "macos_unit_test")
 load("@rules_cc//cc:defs.bzl", "cc_proto_library")
 
 package(
@@ -61,6 +62,27 @@ proto_library(
 cc_proto_library(
     name = "process_tree_cc_proto",
     deps = [":process_tree_proto"],
+)
+
+objc_library(
+    name = "process_tree_macos_test_lib",
+    srcs = [
+        "process_tree_macos_test.mm",
+    ],
+    sdk_dylibs = [
+        "bsm",
+    ],
+    deps = [
+        ":process_tree",
+    ],
+)
+
+macos_unit_test(
+    name = "process_tree_macos_test",
+    deps = [
+        ":process_tree_macos_test_lib",
+    ],
+    minimum_os_version = "11.0",
 )
 
 cc_test(
