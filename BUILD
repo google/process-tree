@@ -79,10 +79,10 @@ objc_library(
 
 macos_unit_test(
     name = "process_tree_macos_test",
+    minimum_os_version = "11.0",
     deps = [
         ":process_tree_macos_test_lib",
     ],
-    minimum_os_version = "11.0",
 )
 
 cc_test(
