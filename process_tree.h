@@ -104,7 +104,7 @@ public:
   // Traverse the tree from the given Process to its parent.
   std::shared_ptr<const Process> GetParent(const Process &p) const;
 
-#if SANTA_PROCESS_TREE_DEBUG
+#if PROCESS_TREE_DEBUG
   // Dump the tree in a human readable form to the given ostream.
   void DebugDump(std::ostream &stream) const;
 #endif

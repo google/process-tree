@@ -250,7 +250,7 @@ std::shared_ptr<const Process> ProcessTree::GetParent(const Process &p) const {
   return p.parent_;
 }
 
-#if SANTA_PROCESS_TREE_DEBUG
+#if PROCESS_TREE_DEBUG
 void ProcessTree::DebugDump(std::ostream &stream) const {
   absl::ReaderMutexLock lock(&mtx_);
   stream << map_.size() << " processes" << std::endl;
