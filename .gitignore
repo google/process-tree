@@ -1,0 +1,5 @@
+.DS_Store
+bazel-*
+compile_commands.json
+.cache/
+.vscode/*

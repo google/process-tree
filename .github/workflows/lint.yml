@@ -1,0 +1,20 @@
+name: 'Lint'
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+jobs:
+  lint_and_check:
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Lint
+        run: ./lint.sh
+      - name: Check for changes
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "::error::Lint script modified files. Run the linter locally and commit changes."
+            exit 1
+          fi
